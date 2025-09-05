@@ -4,6 +4,7 @@
   "description": "Pathfinity.ai - Career-First Learning Platform powered by PathIQ™",
   "main": "index.html",
   "scripts": {
+    "build": "echo 'Static site - no build required'",
     "start": "python -m http.server 8000",
     "serve": "npx serve -s ."
   },
