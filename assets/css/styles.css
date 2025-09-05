@@ -1404,6 +1404,67 @@ body.light-mode .mission-connection p {
     justify-content: center;
 }
 
+/* Student Journey Section */
+.student-journey {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 3rem;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.student-journey .journey-step {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.1);
+    border: 2px solid #e9d5ff;
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    transition: all 0.3s ease;
+}
+
+.student-journey .journey-step:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(139, 92, 246, 0.15);
+}
+
+.student-journey .step-time {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #8b5cf6;
+    white-space: nowrap;
+    min-width: 100px;
+}
+
+.student-journey .step-content h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #1f2937;
+}
+
+.student-journey .step-content p {
+    color: #6b7280;
+    line-height: 1.6;
+    margin: 0;
+}
+
+body.dark-mode .student-journey .journey-step {
+    background: #1f2937;
+    border-color: #374151;
+}
+
+body.dark-mode .student-journey .step-content h4 {
+    color: #f3f4f6;
+}
+
+body.dark-mode .student-journey .step-content p {
+    color: #9ca3af;
+}
+
 /* Footer */
 .footer {
     padding: 3rem 0 2rem;
