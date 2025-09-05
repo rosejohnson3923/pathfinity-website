@@ -1,0 +1,22 @@
+{
+  "name": "pathfinity-website",
+  "version": "1.0.0",
+  "description": "Pathfinity.ai - Career-First Learning Platform powered by PathIQ™",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "serve": "npx serve -s ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rosejohnson3923/pathfinity-website.git"
+  },
+  "keywords": [
+    "pathfinity",
+    "education",
+    "pathiq",
+    "career-first-learning"
+  ],
+  "author": "Esposure Inc",
+  "license": "UNLICENSED"
+}

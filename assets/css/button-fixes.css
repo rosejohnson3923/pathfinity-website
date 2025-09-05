@@ -1,0 +1,162 @@
+/* Button Contrast and Visibility Fixes for Pathfinity Website */
+
+/* Ensure buttons in the pathfinity-website are isolated from main app styles */
+.nav-cta .btn,
+.hero-cta .btn,
+.cta-buttons .btn,
+a.btn,
+button.btn {
+    /* Force display and layout */
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    
+    /* Ensure minimum size for accessibility */
+    min-height: 44px !important;
+    min-width: 120px !important;
+    
+    /* Ensure text is visible */
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    line-height: 1.2 !important;
+    
+    /* Prevent inheritance issues */
+    text-transform: none !important;
+    letter-spacing: normal !important;
+    word-spacing: normal !important;
+    white-space: nowrap !important;
+    
+    /* Ensure clickability */
+    pointer-events: auto !important;
+    user-select: none !important;
+}
+
+/* Primary Button Specific Fixes */
+.btn-primary,
+a.btn-primary,
+button.btn-primary {
+    /* Gradient background with fallback */
+    background: #8B5CF6 !important;
+    background: linear-gradient(135deg, #8B5CF6, #6366F1) !important;
+    
+    /* White text with high contrast */
+    color: #FFFFFF !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
+    
+    /* Remove any conflicting borders */
+    border: none !important;
+    outline: none !important;
+}
+
+.btn-primary:hover,
+a.btn-primary:hover,
+button.btn-primary:hover {
+    /* Maintain text visibility on hover */
+    color: #FFFFFF !important;
+    background: linear-gradient(135deg, #9B6FF6, #7376F1) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);
+}
+
+/* Secondary Button Specific Fixes */
+.btn-secondary,
+a.btn-secondary,
+button.btn-secondary {
+    /* Transparent background */
+    background: transparent !important;
+    
+    /* High contrast border and text */
+    border: 2px solid #F9FAFB !important;
+    color: #F9FAFB !important;
+}
+
+.btn-secondary:hover,
+a.btn-secondary:hover,
+button.btn-secondary:hover {
+    /* Solid background on hover */
+    background: #F9FAFB !important;
+    color: #111827 !important;
+    border-color: #F9FAFB !important;
+    transform: translateY(-2px);
+}
+
+/* Light mode adjustments */
+body.light-mode .btn-secondary,
+body.light-mode a.btn-secondary,
+body.light-mode button.btn-secondary {
+    border-color: #111827 !important;
+    color: #111827 !important;
+}
+
+body.light-mode .btn-secondary:hover,
+body.light-mode a.btn-secondary:hover,
+body.light-mode button.btn-secondary:hover {
+    background: #111827 !important;
+    color: #FFFFFF !important;
+    border-color: #111827 !important;
+}
+
+/* Large button variant */
+.btn-large,
+a.btn-large,
+button.btn-large {
+    padding: 1rem 2rem !important;
+    font-size: 1.1rem !important;
+    min-width: 150px !important;
+}
+
+/* Ensure buttons in specific sections work */
+.hero .btn,
+.cta .btn,
+.nav-cta .btn {
+    /* Add extra specificity for these critical areas */
+    position: relative !important;
+    z-index: 10 !important;
+}
+
+/* Fix for buttons that might be hidden on mobile */
+@media (max-width: 768px) {
+    .nav-cta .btn {
+        /* Override any mobile hiding */
+        display: inline-flex !important;
+    }
+}
+
+/* Debug helper - remove in production */
+.btn::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    pointer-events: none;
+}
+
+/* Focus states for accessibility */
+.btn:focus,
+a.btn:focus,
+button.btn:focus {
+    outline: 3px solid rgba(139, 92, 246, 0.5) !important;
+    outline-offset: 2px !important;
+}
+
+/* Active states */
+.btn:active,
+a.btn:active,
+button.btn:active {
+    transform: translateY(0) !important;
+}
+
+/* Ensure links styled as buttons don't have underlines */
+a.btn {
+    text-decoration: none !important;
+}
+
+/* Print styles */
+@media print {
+    .btn {
+        border: 1px solid #000 !important;
+        color: #000 !important;
+        background: none !important;
+    }
+}
