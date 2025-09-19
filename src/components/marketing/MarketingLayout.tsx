@@ -176,12 +176,12 @@ export const MarketingLayout: React.FC<MarketingLayoutProps> = ({
               )}
               
               {/* Subscriber Login Button */}
-              <Link 
-                to="/app/login"
+              <a
+                href="https://app.pathfinity.ai/login"
                 className="px-4 py-2 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors font-medium"
               >
                 Login
-              </Link>
+              </a>
               
               <Link 
                 to="/waitlist"
@@ -279,13 +279,13 @@ export const MarketingLayout: React.FC<MarketingLayoutProps> = ({
                 )}
                 
                 {/* Subscriber Login Button - Mobile */}
-                <Link 
-                  to="/app/login"
+                <a
+                  href="https://app.pathfinity.ai/login"
                   className="block text-center px-4 py-2 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors font-medium"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Login
-                </Link>
+                </a>
                 
                 <Link 
                   to="/waitlist"
