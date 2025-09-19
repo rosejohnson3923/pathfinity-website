@@ -68,13 +68,13 @@ export const ResearchResults: React.FC = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-              <Link
-                to="/demo"
+              <a
+                href="https://app.pathfinity.ai"
                 className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-xl font-semibold text-lg hover:shadow-lg transform hover:scale-105 transition-all duration-200 flex items-center justify-center space-x-2"
               >
                 <Play className="w-5 h-5" />
                 <span>Experience the Research</span>
-              </Link>
+              </a>
               
               <Link
                 to="/waitlist"

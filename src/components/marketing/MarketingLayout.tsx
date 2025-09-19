@@ -167,12 +167,12 @@ export const MarketingLayout: React.FC<MarketingLayoutProps> = ({
             <div className="hidden md:flex items-center space-x-4">
               
               {showDemoButton && (
-                <Link 
-                  to="/demo"
+                <a
+                  href="https://app.pathfinity.ai"
                   className="px-4 py-2 text-purple-600 dark:text-purple-400 border border-purple-300 dark:border-purple-600 rounded-lg hover:bg-purple-50 dark:hover:bg-purple-900/20 transition-colors font-medium"
                 >
                   Try Demo
-                </Link>
+                </a>
               )}
               
               {/* Subscriber Login Button */}
@@ -269,13 +269,13 @@ export const MarketingLayout: React.FC<MarketingLayoutProps> = ({
               <div className="pt-4 space-y-2">
                 
                 {showDemoButton && (
-                  <Link 
-                    to="/demo"
+                  <a
+                    href="https://app.pathfinity.ai"
                     className="block text-center px-4 py-2 text-purple-600 dark:text-purple-400 border border-purple-300 dark:border-purple-600 rounded-lg hover:bg-purple-50 dark:hover:bg-purple-900/20 transition-colors font-medium"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Try Demo
-                  </Link>
+                  </a>
                 )}
                 
                 {/* Subscriber Login Button - Mobile */}
@@ -337,7 +337,7 @@ export const MarketingLayout: React.FC<MarketingLayoutProps> = ({
               <ul className="space-y-2 text-sm text-gray-400">
                 <li><Link to="/#pathiq" className="hover:text-white transition-colors">PathIQ™ Intelligence System</Link></li>
                 <li><Link to="/how-it-works#how-pathfinity-works" className="hover:text-white transition-colors">How Pathfinity.ai Works</Link></li>
-                <li><Link to="/demo#choose-demo-experience" className="hover:text-white transition-colors">Choose Your Demo Experience</Link></li>
+                <li><a href="https://app.pathfinity.ai" className="hover:text-white transition-colors">Choose Your Demo Experience</a></li>
                 <li><Link to="/research#science-behind-pathfinity" className="hover:text-white transition-colors">The Science Behind Pathfinity.ai</Link></li>
               </ul>
             </div>

@@ -15,6 +15,7 @@ import { Contact } from './pages/marketing/Contact';
 import { PrivacyPolicy } from './pages/marketing/PrivacyPolicy';
 import { ESACalculator } from './pages/marketing/ESACalculator';
 import { ESAInfo } from './pages/marketing/ESAInfo';
+import { DemoSelector } from './pages/marketing/DemoSelector';
 
 // Import global styles
 import './index.css';
@@ -37,6 +38,7 @@ function App() {
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/esa-calculator" element={<ESACalculator />} />
         <Route path="/esa-info" element={<ESAInfo />} />
+        <Route path="/demo" element={<DemoSelector />} />
       </Routes>
     </Router>
   );
