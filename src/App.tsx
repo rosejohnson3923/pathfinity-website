@@ -17,6 +17,12 @@ import { ESACalculator } from './pages/marketing/ESACalculator';
 import { ESAInfo } from './pages/marketing/ESAInfo';
 import { DemoSelector } from './pages/marketing/DemoSelector';
 
+// Demo Dashboard Pages
+import { ParentDashboard } from './pages/demo/ParentDashboard';
+import { TeacherDashboard } from './pages/demo/TeacherDashboard';
+import { PrincipalDashboard } from './pages/demo/PrincipalDashboard';
+import { DistrictAdminDashboard } from './pages/demo/DistrictAdminDashboard';
+
 // Import global styles
 import './index.css';
 
@@ -39,6 +45,12 @@ function App() {
         <Route path="/esa-calculator" element={<ESACalculator />} />
         <Route path="/esa-info" element={<ESAInfo />} />
         <Route path="/demo" element={<DemoSelector />} />
+
+        {/* Demo Dashboard Routes */}
+        <Route path="/demo/parent-dashboard" element={<ParentDashboard />} />
+        <Route path="/demo/teacher-dashboard" element={<TeacherDashboard />} />
+        <Route path="/demo/principal-dashboard" element={<PrincipalDashboard />} />
+        <Route path="/demo/district-admin-dashboard" element={<DistrictAdminDashboard />} />
       </Routes>
     </Router>
   );
