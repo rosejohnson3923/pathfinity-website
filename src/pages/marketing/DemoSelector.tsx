@@ -158,21 +158,8 @@ export function DemoSelector() {
   ];
 
   const handleDemoSelect = (urlParam: string) => {
-    // For student demos, navigate to the app
-    if (['sam-k', 'alex-1st', 'jordan-7th', 'taylor-10th'].includes(urlParam)) {
-      window.location.href = `https://app.pathfinity.ai/app/login?demo=true&user=${urlParam}`;
-    } else {
-      // For non-student demos, navigate to local dashboard pages
-      if (urlParam === 'sarah-parent' || urlParam === 'mike-parent') {
-        window.location.href = '/demo/parent-dashboard';
-      } else if (urlParam.includes('teacher')) {
-        window.location.href = '/demo/teacher-dashboard';
-      } else if (urlParam === 'principal') {
-        window.location.href = '/demo/principal-dashboard';
-      } else if (urlParam === 'superintendent') {
-        window.location.href = '/demo/district-admin-dashboard';
-      }
-    }
+    // Navigate to the app with demo parameters for ALL users
+    window.location.href = `https://app.pathfinity.ai/app/login?demo=true&user=${urlParam}`;
   };
 
   return (
