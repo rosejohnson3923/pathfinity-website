@@ -12,8 +12,11 @@ import {
 } from 'lucide-react';
 
 export function DemoSelector() {
+  const [activeTab, setActiveTab] = React.useState('students');
+
   const demoCategories = [
     {
+      id: "students",
       title: "👦👧 Students",
       icon: <Users className="w-6 h-6" />,
       description: "Experience learning through different grade levels",
@@ -62,44 +65,66 @@ export function DemoSelector() {
       ]
     },
     {
-      title: "👩‍🏫 Teachers",
-      icon: <BookOpen className="w-6 h-6" />,
-      description: "Manage classrooms and track student progress",
+      id: "schools",
+      title: "🏫 Schools",
+      icon: <School className="w-6 h-6" />,
+      description: "Experience different educational environments",
       color: "from-emerald-500 to-teal-600",
-      users: [
+      subcategories: [
         {
-          name: "Ms. Jenna Grain",
-          grade: "K-2 Teacher",
-          school: "Sand View Elementary",
-          description: "Elementary educator focused on early literacy",
-          email: "jenna.grain@sandview.plainviewisd.edu",
-          password: "password123",
-          emoji: "👩‍🏫",
-          urlParam: "teacher-view"
+          title: "Public Schools",
+          users: [
+            {
+              name: "Ms. Jenna Grain",
+              grade: "K-2 Teacher",
+              school: "Sand View Elementary",
+              description: "Elementary educator focused on early literacy",
+              email: "jenna.grain@sandview.plainviewisd.edu",
+              password: "password123",
+              emoji: "👩‍🏫",
+              urlParam: "teacher-view"
+            },
+            {
+              name: "Ms. Brenda Sea",
+              grade: "Middle School",
+              school: "Ocean View Middle",
+              description: "Science teacher inspiring young minds",
+              email: "brenda.sea@oceanview.plainviewisd.edu",
+              password: "password123",
+              emoji: "👩‍🔬",
+              urlParam: "brenda-teacher"
+            },
+            {
+              name: "Mr. John Land",
+              grade: "High School",
+              school: "City View High",
+              description: "Math teacher preparing students for advanced topics",
+              email: "john.land@cityview.plainviewisd.edu",
+              password: "password123",
+              emoji: "👨‍🏫",
+              urlParam: "john-teacher"
+            }
+          ]
         },
         {
-          name: "Ms. Brenda Sea",
-          grade: "Middle School",
-          school: "Ocean View Middle",
-          description: "Science teacher inspiring young minds",
-          email: "brenda.sea@oceanview.plainviewisd.edu",
-          password: "password123",
-          emoji: "👩‍🔬",
-          urlParam: "brenda-teacher"
-        },
-        {
-          name: "Mr. John Land",
-          grade: "High School",
-          school: "City View High",
-          description: "Math teacher preparing students for advanced topics",
-          email: "john.land@cityview.plainviewisd.edu",
-          password: "password123",
-          emoji: "👨‍🏫",
-          urlParam: "john-teacher"
+          title: "Private/Micro Schools",
+          users: [
+            {
+              name: "Samantha Johnson",
+              grade: "Teacher, Owner",
+              school: "New Frontier Micro School",
+              description: "Experience lesson planning for micro school students",
+              email: "samantha.johnson@newfrontier.pathfinity.edu",
+              password: "password123",
+              emoji: "🏫",
+              urlParam: "microschool-teacher"
+            }
+          ]
         }
       ]
     },
     {
+      id: "parents",
       title: "👨‍👩‍👧‍👦 Parents",
       icon: <UserCircle className="w-6 h-6" />,
       description: "Monitor your child's progress and support their learning",
@@ -128,6 +153,7 @@ export function DemoSelector() {
       ]
     },
     {
+      id: "administration",
       title: "🏫 Administration",
       icon: <Building2 className="w-6 h-6" />,
       description: "School and district leadership dashboards",
@@ -184,9 +210,35 @@ export function DemoSelector() {
             </p>
           </div>
 
-          {/* Demo Categories */}
+          {/* Tab Navigation */}
+          <div className="mb-8">
+            <div className="border-b border-gray-200 dark:border-gray-700">
+              <nav className="-mb-px flex space-x-8 justify-center">
+                {demoCategories.map((category) => (
+                  <button
+                    key={category.id}
+                    onClick={() => setActiveTab(category.id)}
+                    className={`py-4 px-1 border-b-2 font-medium text-sm transition-colors duration-200 ${
+                      activeTab === category.id
+                        ? 'border-purple-500 text-purple-600 dark:text-purple-400'
+                        : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300'
+                    }`}
+                  >
+                    <div className="flex items-center space-x-2">
+                      {category.icon}
+                      <span>{category.title}</span>
+                    </div>
+                  </button>
+                ))}
+              </nav>
+            </div>
+          </div>
+
+          {/* Active Tab Content */}
           <div className="space-y-8">
-            {demoCategories.map((category, categoryIndex) => (
+            {demoCategories
+              .filter(category => category.id === activeTab)
+              .map((category, categoryIndex) => (
               <div key={categoryIndex} className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
                 {/* Category Header */}
                 <div className={`bg-gradient-to-r ${category.color} p-4`}>
@@ -205,51 +257,108 @@ export function DemoSelector() {
                   </div>
                 </div>
 
-                {/* Users Grid */}
+                {/* Users Grid or Subcategories */}
                 <div className="p-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {category.users.map((user, userIndex) => (
-                      <button
-                        key={userIndex}
-                        onClick={() => handleDemoSelect(user.urlParam)}
-                        className="group relative p-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg hover:bg-gradient-to-br hover:from-purple-50 hover:to-indigo-50 dark:hover:from-purple-900/20 dark:hover:to-indigo-900/20 transition-all duration-200 text-left border border-gray-200 dark:border-gray-600 hover:border-purple-300 dark:hover:border-purple-600 hover:shadow-md"
-                      >
-                        <div className="flex items-start space-x-3">
-                          <div className="text-3xl">{user.emoji}</div>
-                          <div className="flex-1">
-                            <h4 className="font-semibold text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400">
-                              {user.name}
-                            </h4>
-                            <p className="text-sm text-gray-600 dark:text-gray-400">
-                              {user.grade} • {user.school}
-                            </p>
-                            <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
-                              {user.description}
-                            </p>
-                          </div>
-                          <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-purple-600 dark:group-hover:text-purple-400 transform group-hover:translate-x-1 transition-transform" />
-                        </div>
+                  {category.subcategories ? (
+                    // Render subcategories for Schools
+                    <div className="space-y-6">
+                      {category.subcategories.map((subcategory, subIndex) => (
+                        <div key={subIndex}>
+                          <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-3">
+                            {subcategory.title}
+                          </h4>
+                          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            {subcategory.users.map((user, userIndex) => (
+                              <button
+                                key={userIndex}
+                                onClick={() => handleDemoSelect(user.urlParam)}
+                                className="group relative p-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg hover:bg-gradient-to-br hover:from-purple-50 hover:to-indigo-50 dark:hover:from-purple-900/20 dark:hover:to-indigo-900/20 transition-all duration-200 text-left border border-gray-200 dark:border-gray-600 hover:border-purple-300 dark:hover:border-purple-600 hover:shadow-md"
+                              >
+                                <div className="flex items-start space-x-3">
+                                  <div className="text-3xl">{user.emoji}</div>
+                                  <div className="flex-1">
+                                    <h4 className="font-semibold text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400">
+                                      {user.name}
+                                    </h4>
+                                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                                      {user.grade} • {user.school}
+                                    </p>
+                                    <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                                      {user.description}
+                                    </p>
+                                  </div>
+                                  <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-purple-600 dark:group-hover:text-purple-400 transform group-hover:translate-x-1 transition-transform" />
+                                </div>
 
-                        {/* Credentials Preview */}
-                        <div className="mt-3 pt-3 border-t border-gray-200 dark:border-gray-600">
-                          <div className="text-xs space-y-1">
-                            <div className="flex items-center space-x-2">
-                              <span className="text-gray-500 dark:text-gray-400">Email:</span>
-                              <span className="text-gray-700 dark:text-gray-300 font-mono text-[10px]">
-                                {user.email}
-                              </span>
-                            </div>
-                            <div className="flex items-center space-x-2">
-                              <span className="text-gray-500 dark:text-gray-400">Password:</span>
-                              <span className="text-gray-700 dark:text-gray-300 font-mono">
-                                ••••••••••••
-                              </span>
-                            </div>
+                                {/* Credentials Preview */}
+                                <div className="mt-3 pt-3 border-t border-gray-200 dark:border-gray-600">
+                                  <div className="text-xs space-y-1">
+                                    <div className="flex items-center space-x-2">
+                                      <span className="text-gray-500 dark:text-gray-400">Email:</span>
+                                      <span className="text-gray-700 dark:text-gray-300 font-mono text-[10px]">
+                                        {user.email}
+                                      </span>
+                                    </div>
+                                    <div className="flex items-center space-x-2">
+                                      <span className="text-gray-500 dark:text-gray-400">Password:</span>
+                                      <span className="text-gray-700 dark:text-gray-300 font-mono">
+                                        ••••••••••••
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </button>
+                            ))}
                           </div>
                         </div>
-                      </button>
-                    ))}
-                  </div>
+                      ))}
+                    </div>
+                  ) : (
+                    // Render regular users for other categories
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                      {category.users?.map((user, userIndex) => (
+                        <button
+                          key={userIndex}
+                          onClick={() => handleDemoSelect(user.urlParam)}
+                          className="group relative p-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg hover:bg-gradient-to-br hover:from-purple-50 hover:to-indigo-50 dark:hover:from-purple-900/20 dark:hover:to-indigo-900/20 transition-all duration-200 text-left border border-gray-200 dark:border-gray-600 hover:border-purple-300 dark:hover:border-purple-600 hover:shadow-md"
+                        >
+                          <div className="flex items-start space-x-3">
+                            <div className="text-3xl">{user.emoji}</div>
+                            <div className="flex-1">
+                              <h4 className="font-semibold text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400">
+                                {user.name}
+                              </h4>
+                              <p className="text-sm text-gray-600 dark:text-gray-400">
+                                {user.grade} • {user.school}
+                              </p>
+                              <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                                {user.description}
+                              </p>
+                            </div>
+                            <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-purple-600 dark:group-hover:text-purple-400 transform group-hover:translate-x-1 transition-transform" />
+                          </div>
+
+                          {/* Credentials Preview */}
+                          <div className="mt-3 pt-3 border-t border-gray-200 dark:border-gray-600">
+                            <div className="text-xs space-y-1">
+                              <div className="flex items-center space-x-2">
+                                <span className="text-gray-500 dark:text-gray-400">Email:</span>
+                                <span className="text-gray-700 dark:text-gray-300 font-mono text-[10px]">
+                                  {user.email}
+                                </span>
+                              </div>
+                              <div className="flex items-center space-x-2">
+                                <span className="text-gray-500 dark:text-gray-400">Password:</span>
+                                <span className="text-gray-700 dark:text-gray-300 font-mono">
+                                  ••••••••••••
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </button>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
